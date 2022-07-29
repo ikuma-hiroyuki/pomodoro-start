@@ -16,9 +16,9 @@ timer = None
 
 # ---------------------------- TIMER RESET ------------------------------- #
 def reset_timer():
-    window.after_cancel(str(timer))
+    window.after_cancel(str(timer))  # sleepの解除
     title_label.config(text="Timer")
-    canvas.itemconfig(timer_text, text="00:00")
+    canvas.itemconfig(timer_text, text="00:00")  # canvasの再設定
     global reps
     reps = 0
     check_label.config(text="")
@@ -52,7 +52,7 @@ def count_down(count):
     canvas.itemconfig(timer_text, text=f"{count_min:02}:{count_sec:02}")
     if count > 0:
         global timer
-        timer = window.after(1000, count_down, count - 1)
+        timer = window.after(1000, count_down, count - 1)  # sleep設定
     else:
         start_timer()
         marks = ""
